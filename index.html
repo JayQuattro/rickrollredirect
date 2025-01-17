@@ -7,53 +7,90 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>RaZar - Web Application Firewall</title>
     <style>
+        /* Base Styles */
+		*
+		{
+		 -webkit-user-select: none; /* Safari */
+		-ms-user-select: none; /* IE 10 and IE 11 */
+		user-select: none; /* Standard syntax */
+		}
         body {
-            background: linear-gradient(to bottom right, #1a1a2e, #16213e, #0f3460);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            color: #ffffff;
+            background: #0f0f0f; /* Dark background similar to Cloudflare */
+            color: #40401; /* Light text for contrast */
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
+
+        /* Loading Container */
         .loading-container {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05); /* Slightly transparent background */
             backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 40px 60px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
         }
+
+        /* Header */
         h2 {
             margin-bottom: 20px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f38020; /* Cloudflare's signature orange */
         }
-        p {
-            margin-top: 20px;
-            font-weight: 400;
+
+        h2 i {
+            margin-right: 10px;
+            font-size: 1.5em;
+            color: #f38020; /* Ensuring the icon matches the text */
         }
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-        
+
+        /* Spinner */
         .spinner {
-            border: 4px solid #f3f3f3;
+            border: 6px solid rgba(243, 243, 243, 0.2); /* Light border */
+            border-top: 6px solid #f38020; /* Orange spinner */
             border-radius: 50%;
-            border-top: 4px solid #3498db;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             animation: spin 1s linear infinite;
+            margin: 20px auto;
         }
+
+        /* Spinner Animation */
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+
+        /* Paragraph */
+        p {
+            margin-top: 15px;
+            font-weight: 400;
+            color: #cccccc; /* Slightly muted text color */
+        }
+
+        /* Button (Optional) */
+        .redirect-btn {
+            margin-top: 25px;
+            padding: 10px 20px;
+            background-color: #f38020;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .redirect-btn:hover {
+            background-color: #d97707;
         }
     </style>
     <script>
@@ -63,11 +100,13 @@
     </script>
 </head>
 <body>
-    <div class="loading-container" style="max-width: 600px; margin: 0 auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <div class="loading-container">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <h2><i class="fa-brands fa-cloudflare"></i> Web Application Firewall</h2>
         <div class="spinner"></div>
         <p>Checking your browser before accessing, please wait...</p>
+        <!-- Optional Redirect Button -->
+        <button class="redirect-btn" onclick="window.location.replace('https://youtu.be/dQw4w9WgXcQ')">Proceed Now</button>
     </div>
 </body>
 </html>
